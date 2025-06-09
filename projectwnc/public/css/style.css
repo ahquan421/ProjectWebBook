@@ -1,0 +1,306 @@
+/* Đặt biàu nền tổng thể và font chữ cho toàn bộ trang */
+body {
+    background-color: #f8f9fa;       /* Nền trắng xám nhạt, tạo cảm giác nhẹ nhàng */
+    font-family: Arial, sans-serif;  /* Font chữ phổ biến, dễ đọc */
+    margin: 0;                        /* Xóa margin mặc định của trình duyệt */
+}
+
+/* Layout chính chia 2 phần: sidebar và nội dung */
+.main-layout {
+    display: flex;                   /* Dùng flexbox để chia layout ngang: sidebar - nội dung */
+}
+
+
+/* file header */
+.sidebar {
+    
+    position: fixed;
+    width: 200px;                    /* Sidebar rộng 200px cố định */
+    background-color: #2c3e50;       /* Màu xanh đen hiện đại */
+    color: white;                    /* Chữ trắng cho sidebar */
+    height: 100vh;                   /* Chiều cao chiếm toàn bộ màn hình */
+    padding: 20px;                   /* Khoảng cách lề trong sidebar */
+}
+
+/* Khoảng cách dưới tiêu đề sidebar */
+.sidebar h2 {
+    display: flex;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    gap: 12px;
+}
+
+/* Bảng liên kết trong sidebar */
+.sidebar-table {
+    width: 100%;                     /* Chiều rộng tối đa */
+    border-collapse: collapse;       /* Gộp viền nếu có */
+}
+
+/* Loại bỏ padding mặc định trong từng ô td */
+.sidebar-table td {
+    padding: 0;
+}
+
+/* Cài đặt cho từng liên kết trong sidebar */
+.sidebar-table a {
+    display: block;                  /* Cho phép chiếm toàn bộ chiều ngang */
+    width: 100%;
+    color: white;                    /* Màu chữ trắng */
+    text-decoration: none;          /* Bỏ gạch chân */
+    padding: 12px 10px;             /* Padding trên/dưới 12px, trái/phải 10px */
+    border-radius: 4px;             /* Bo góc nhẹ */
+    transition: background-color 0.2s; /* Hiệu ứng chuyển nền khi hover */
+    display: flex;                /* Sắp xếp icon và chữ theo hàng ngang */
+    align-items: center;
+    gap: 10px;
+}
+
+/* Hiệu ứng hover cho link trong sidebar */
+.sidebar-table a:hover {
+    background-color: #34495e;       /* Màu nền sáng hơn */
+    color: #00bbff;                  /* Màu chữ xanh ngọc nổi bật */
+}
+
+
+
+
+
+
+
+/* file index*/
+.main-content {
+    margin-left: 240px;   
+    flex: 1;                         /* Chiếm toàn bộ không gian còn lại */
+    padding: 20px;                   /* Khoảng cách bên trong */
+}
+
+/* Tiêu đề trong nội dung chính */
+.main-content h2 {
+    /*position: fixed;*/
+    font-size: 25px;                 /* Cỡ chữ lớn */
+    margin-bottom: 20px;             /* Cách phía dưới */
+    margin-top: 0px;
+}
+
+/* Bảng hiển thị sách: override bootstrap một số phần nếu cần */
+.table {
+    font-size: 15px; 
+    width: 100%;                     /* Rộng toàn khối */
+    border-collapse: collapse;       /* Gộp viền bảng */
+    background-color: #ffffff;       /* Nền trắng */
+    box-shadow: 0 2px 5px rgba(0.15,0.15,0.15,0.15); /* Bóng nhẹ */
+    margin-bottom: 20px;
+}
+
+.table th, .table td {
+    padding: 12px 10px;              /* Padding đẹp mắt */
+    text-align: left;                /* Căn trái nội dung */
+    border-bottom: 1px solid #dee2e6;/* Viền dưới nhẹ */
+    vertical-align: middle;          /* Căn giữa chiều cao */
+}
+
+/* Dòng tiêu đề bảng */
+.table thead th {
+    background-color: #f1f1f1;       /* Nền xám nhẹ */
+    font-weight: bold;
+}
+
+/* Tô màu hàng đầu với class .table-primary (Bootstrap hỗ trợ nhưng ta thêm tone nhẹ) */
+.table-primary th {
+    background-color: #e0eafc !important;
+    color: #000;
+}
+
+/* Các nút hành động: View, Edit, Delete */
+.tacvu {
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+a.button-link {
+    appearance: none;
+    padding: 10px 16px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 6px;
+    display: inline-flex;              /* dùng flex để căn icon + chữ */
+    align-items: center;              /* căn giữa theo chiều dọc */
+    gap: 6px; 
+    background-color: #fff;
+    transition: all 0.2s ease;
+    color: #333;
+    cursor: pointer;
+}
+a.button-link:hover {
+    background-color: #c7c9df;
+}
+
+/* Nút thêm sách mới */
+a.button-add {
+    background-color: #ffffff; 
+    color: #000000;
+    padding: 8px 16px;             /* Padding đều */
+    border-radius: 4px;            /* Bo góc */
+    text-decoration: none;         /* Bỏ gạch chân */
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-flex;
+    transition: background-color 0.2s ease;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 5px rgba(0.15,0.15,0.15,0.15);
+}
+a.button-add:hover {
+    background-color: #b2b8c0;     /* Màu xanh đậm hơn khi di chuột */
+}
+
+/* Form xóa - nút trong form */
+.btn-danger {
+    display: inline-flex;
+    gap: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 30px;
+    border: none;
+    color: #000000;
+    font-weight: bold;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+.btn-danger:hover {
+    background-color: #ff0000;
+}
+.confirm {
+    display: inline-flex;
+    gap: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 30px;
+    border: none;
+    color: #000000;
+    font-weight: bold;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+.confirm:hover {
+    background-color:rgb(65, 65, 242);
+    color: white;
+}
+
+
+/* Hình ảnh minh họa trong bảng */
+table img {
+    border-radius: 4px;
+    max-width: 80px;
+    height: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Tiêu đề */
+.tieude {
+    font-size: 26px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Layout hiển thị thông tin sách */
+.main-show {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Hàng đầu gồm ảnh và thông tin */
+.img,
+.thongtin {
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Ảnh sách */
+.img {
+    justify-content: center; /* căn giữa ngang */
+    align-items: center;
+    width:15%;
+    padding-left: 0px;
+    padding-right: 20px;
+    
+}
+
+.img img {
+    
+    width: 100%;
+    max-width: 220px;
+}
+
+/* Thông tin sách */
+.thongtin {
+    width: 50%;
+    max-width: 700px;
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+
+.thongtin h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.thongtin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    color: #333;
+}
+
+.thongtin-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.thongtin-table td:first-child {
+    font-weight: 500;
+    color: #666;
+    width: 20%;
+}
+
+
+/* Mô tả sản phẩm */
+.mota {
+    width:40%;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.mota h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.ttct {
+    margin-top: 0px;
+    display: flex;
+}
