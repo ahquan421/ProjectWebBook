@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 class LoginController extends Controller
 {
     public function login(){
-        return view('Login');
+        return view('login');
     }
 
     public function home(){

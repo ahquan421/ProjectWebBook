@@ -19,10 +19,27 @@ class CourseController extends Controller
     }
 
     public function store(Request $request){
-        //Điều này sẽ tạo mục nhập cho khóa học
-        Course::create($request->all());
-        return redirect()->route("course.index");
+        $validated = $request->validate([
+            'tensach' => 'required|string',
+            'tacgia' => 'required|string',
+            'nxb' => 'required|string',
+            'theloai' => 'required|string',
+            'giatien' => 'required|numeric',
+            'soluong' => 'required|integer',
+            'anhminhhoa' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
+    // Xử lý upload ảnh
+        if ($request->hasFile('anhminhhoa')) {
+            $image = $request->file('anhminhhoa');
+            $imageName = time() . '.' . $image->getClientOriginalExtension(); 
+            $image->move(public_path('images'), $imageName); 
+            $validated['anhminhhoa'] = $imageName; 
+        }
+
+        Course::create($validated);
+
+        return redirect()->route('course.index')->with('success', 'Thêm sách thành công');
     }
     public function show($id){
         //Truy xuất data từ database

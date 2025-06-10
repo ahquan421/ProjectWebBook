@@ -9,7 +9,7 @@
                         <div class="ttct">
                                 <div class="img">
                                         <p>
-                                                <img src="{{ asset('storage/anhminhhoa/' . $course->anhminhhoa) }}" alt="Ảnh minh họa" width="80" height="auto">
+                                                <img src="{{ asset('images/' . $course->anhminhhoa) }}" alt="Ảnh minh họa" width="80" height="auto">
                                                 <p> </p>
                                                 <b>  Ảnh minh họa:</b>
                                         </p>
