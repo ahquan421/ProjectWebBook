@@ -49,11 +49,16 @@ class AuthController extends Controller
         $request->validate([
             'username' => 'required',
             'password' => 'required|min:4',
+            'fullname' => 'required|string|max:255',
+            'birthyear' => 'required|digits:4|integer|min:1900|max:' . date('Y'),
         ]);
 
         $user = [
+            'fullname' => $request->fullname,
+            'birthyear' => $request->birthyear,
             'username' => $request->username,
             'password' => $request->password,
+            
         ];
 
         $path = storage_path('app/users.json');

@@ -5,6 +5,9 @@
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
@@ -63,10 +66,16 @@
             cursor: pointer;
             font-size: 15px;
         }
+        .btn-login:hover{
+            background-color:rgb(29, 103, 31);
+        }
         .link-group {
             text-align: center;
             margin-top: 15px;
             font-size: 14px;
+        }
+        .link-group a:hover{
+            color:rgb(7, 78, 155);
         }
         .link-group a {
             color: #007bff;

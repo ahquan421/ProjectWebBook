@@ -82,6 +82,14 @@
         <form class="form-box" method="POST" action="{{ route('register.handle') }}">
             @csrf
             <h2>Đăng ký người dùng</h2>
+            
+            <div class="input-group">
+                <input type="text" name="fullname" placeholder="Họ tên" required>
+            </div>
+
+            <div class="input-group">
+                <input type="number" name="birthyear" placeholder="Năm sinh" min="1900" max="2100" required>
+            </div>
 
             <div class="input-group">
                 <input type="text" name="username" placeholder="Tài khoản" required>
