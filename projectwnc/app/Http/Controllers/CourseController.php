@@ -26,7 +26,7 @@ class CourseController extends Controller
             'theloai' => 'required|string',
             'giatien' => 'required|numeric',
             'soluong' => 'required|integer',
-            'anhminhhoa' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'anhminhhoa' => 'required|image|mimes:jpeg,png,jpg,gif,webp,bmp,svg|max:2048',
         ]);
 
     // Xử lý upload ảnh
