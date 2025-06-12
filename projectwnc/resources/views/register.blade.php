@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Register</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <style>
         body {
@@ -43,8 +43,7 @@
         .input-group {
             margin-bottom: 15px;
         }
-        .input-group input,
-        .input-group select {
+        .input-group input {
             width: 100%;
             padding: 12px 15px;
             border-radius: 25px;
@@ -52,12 +51,12 @@
             outline: none;
             font-size: 14px;
         }
-        .btn-login {
+        .btn-register {
             width: 100%;
             padding: 12px;
             border: none;
             border-radius: 25px;
-            background-color: #4CAF50;
+            background-color: #2196F3;
             color: white;
             font-weight: bold;
             cursor: pointer;
@@ -77,34 +76,25 @@
 <body>
 <div class="container">
     <div class="left">
-        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="login icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/747/747545.png" alt="register icon">
     </div>
     <div class="right">
-        <form class="form-box" method="POST" action="{{ route('login.handle') }}">
+        <form class="form-box" method="POST" action="{{ route('register.handle') }}">
             @csrf
-            <h2>Member Login</h2>
+            <h2>Đăng ký người dùng</h2>
 
             <div class="input-group">
-                <select name="role" required>
-                    <option value="" disabled selected>-- Chọn vai trò --</option>
-                    <option value="admin">Admin</option>
-                    <option value="user">Người dùng</option>
-                </select>
+                <input type="text" name="username" placeholder="Tài khoản" required>
             </div>
 
             <div class="input-group">
-                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Mật khẩu" required>
             </div>
 
-            <div class="input-group">
-                <input type="password" name="password" placeholder="Password" required>
-            </div>
-
-            <button class="btn-login" type="submit">LOGIN</button>
+            <button class="btn-register" type="submit">Đăng ký</button>
 
             <div class="link-group">
-                <p><a href="#">Forgot Username / Password?</a></p>
-                <p><a href="{{ route('register.form') }}">Create your Account →</a></p>
+                <p>Đã có tài khoản? <a href="{{ route('login') }}">Đăng nhập ngay</a></p>
             </div>
         </form>
     </div>

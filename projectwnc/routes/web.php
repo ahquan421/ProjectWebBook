@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AuthController;
 use App\Models\Course;
 
 // Route::get('/', function () {
@@ -25,4 +26,12 @@ Route::delete('/courses/{course}',[CourseController::class,"destroy"])->name('co
 
 
 Route::get('/login/', [LoginController::class,'login'])->name('login');
-Route::get('/home/',[LoginController::class,'home'])->name('home');
+Route::get('/home',[LoginController::class,'home'])->name('home');
+
+
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'handleLogin'])->name('login.handle');
+
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register.form');
+Route::post('/register', [AuthController::class, 'handleRegister'])->name('register.handle');

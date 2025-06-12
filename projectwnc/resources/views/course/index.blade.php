@@ -35,7 +35,7 @@
                     <td>{{ $course->giatien }} VNĐ</td>
                     <td>{{ $course->soluong }}</td>
                     <td>
-                        <img src="{{ asset('storage/anhminhhoa/' . $course->anhminhhoa) }}" alt="Ảnh minh họa" width="80" height="auto">
+                        <img src="{{ $course->anhminhhoa }}" alt="Ảnh minh họa" width="80">
                     </td>
 
                     <td>
