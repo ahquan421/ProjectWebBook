@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Trang Bán Sách</title>
+
+    {{-- Bootstrap 5 --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         body {
             margin: 0;
@@ -33,6 +37,10 @@
         nav a:hover {
             text-decoration: underline;
         }
+
+        .container {
+            padding: 30px;
+        }
     </style>
 </head>
 <body>
@@ -40,15 +48,18 @@
     <header>
         <div class="logo">📚 BookStore</div>
         <nav>
-            <a href="{{route('home')}}">Trang chủ</a>
+            <a href="{{ route('home') }}">Trang chủ</a>
             <a href="#">Sách mới</a>
-            <a href="{{route('search')}}">Tìm sách</a>
+            <a href="{{ route('search') }}">Tìm sách</a>
             <a href="#">Liên hệ</a>
-            <a href="{{route('login')}}">Đăng nhập</a>
+            <a href="{{ route('login') }}">Đăng nhập</a>
         </nav>
     </header>
 
-    @yield('content')
-
+    {{-- Nội dung chính --}}
+    <main>
+        @yield('content')
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
