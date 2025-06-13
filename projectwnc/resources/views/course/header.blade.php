@@ -31,6 +31,22 @@
                 </a>
             </td>
         </tr>
+        <tr>
+            <td>
+                <a href="#">
+                    
+                    Quản lý đơn hàng
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="#">
+                    
+                    Thống kê & Báo cáo
+                </a>
+            </td>
+        </tr>
 
     </table>
     </div>
