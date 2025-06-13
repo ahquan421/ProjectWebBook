@@ -12,8 +12,14 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function home(){
-        return view('home');
+    public function home()
+    {
+        $newBooks = Course::orderBy('created_at', 'desc')->take(6)->get();
+        $discountedBooks = Course::orderBy('giatien', 'asc')->take(6)->get();
+        $almostOutBooks = Course::where('soluong', '<=', 3)->orderBy('soluong')->take(6)->get();
+        $featuredBooks = Course::inRandomOrder()->take(6)->get();
+
+        return view('home', compact('newBooks', 'discountedBooks', 'almostOutBooks', 'featuredBooks'));
     }
     public function search(Request $request){
         $publishers = Course::select('nxb')->distinct()->pluck('nxb');
