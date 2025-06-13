@@ -35,4 +35,3 @@ Route::post('/login', [AuthController::class, 'handleLogin'])->name('login.handl
 
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register.form');
 Route::post('/register', [AuthController::class, 'handleRegister'])->name('register.handle');
-

@@ -42,7 +42,7 @@
         <nav>
             <a href="{{route('home')}}">Trang chủ</a>
             <a href="#">Sách mới</a>
-            <a href="#">Thể loại</a>
+            <a href="{{route('search')}}">Tìm sách</a>
             <a href="#">Liên hệ</a>
             <a href="{{route('login')}}">Đăng nhập</a>
         </nav>
