@@ -48,7 +48,6 @@
     <header>
         <div class="logo">📚 BookStore</div>
         <nav>
-            <a href="{{ route('home') }}">Trang chủ</a>
             <a href="{{ route('search') }}">Trang chủ</a>
             <a href="#">Liên hệ</a>
             <a href="{{ route('login') }}">Đăng nhập</a>
