@@ -19,7 +19,7 @@ class AuthController extends Controller
         if ($role === 'admin') {
             // Dữ liệu admin có thể cứng hoặc từ DB
             if ($username === 'admin' && $password === '123456') {
-                return redirect()->route('course.index');
+                return redirect()->route('course.page');
             } else {
                 return back()->with('error', 'Sai thông tin Admin');
             }

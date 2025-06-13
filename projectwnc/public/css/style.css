@@ -304,3 +304,72 @@ table img {
     margin-top: 0px;
     display: flex;
 }
+
+
+
+
+
+
+form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    font-family: Arial, sans-serif;
+}
+
+/* Khoảng cách giữa các dòng */
+form div {
+    margin-bottom: 15px;
+}
+
+/* Label */
+form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Input text & file */
+form input[type="text"],
+form input[type="file"] {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Nút quay lại */
+.button-link {
+    display: inline-block;
+    background-color: #6c757d;
+    color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+/* Nút submit */
+form button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Hover hiệu ứng */
+form button:hover {
+    background-color: #0056b3;
+}
+
+.button-link:hover {
+    background-color: #5a6268;
+}

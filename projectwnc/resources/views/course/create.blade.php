@@ -7,7 +7,9 @@
 --}}
 <div class="main-layout">
 
-    @include('course.header')
+    <div class="sidebar">
+        @include('course.header')
+    </div>
     <div class="main-content">
         <h2 class="tieude">Thêm sách mới</h2>
         <form method="post" action="{{ route('course.store') }}" enctype="multipart/form-data">

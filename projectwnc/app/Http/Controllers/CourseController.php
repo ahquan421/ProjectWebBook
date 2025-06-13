@@ -64,4 +64,8 @@ class CourseController extends Controller
         Course::find($id)->delete();
         return redirect()->route('course.index');
     }
+    public function page(){
+        return view('course.page');
+    }
+    
 }

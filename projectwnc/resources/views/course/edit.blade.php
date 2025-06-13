@@ -3,7 +3,9 @@
 @section('content')
 
 <div class="main-layout">
-    @include('course.header')
+    <div class="sidebar">
+        @include('course.header')
+    </div>
     <div class="main-content">
         <h2 class="tieude">Chỉnh sửa chi tiết sách</h2>
         {{-- Day la phuong phap them csdl 

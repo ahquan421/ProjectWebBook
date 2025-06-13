@@ -3,12 +3,14 @@
 @section('content')
 {{-- ✅ BẮT ĐẦU layout mới: container tổng chia 2 cột --}}
 <div class="main-layout"> {{-- ✅ THÊM lớp bọc chia cột --}}
-
-    @include('course.header')
+    <div class="sidebar">
+        @include('course.header')
+    </div>
+    
     
     <!-- ✅ CỘT PHẢI: Nội dung chính -->
     <div class="main-content"> {{-- ✅ THÊM div bọc nội dung phải --}}
-        <div class="vien"></div>
+        
         <h2 class="tieude">Quản lý sách trong kho</h2>
         <table id="trangqly" class="table table-striped table-bordered">
             <thead class="table-primary">

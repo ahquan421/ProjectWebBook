@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="main-layout">
-        @include('course/header')
+        <div class="sidebar">
+        @include('course.header')
+        </div>
         <div class="main-content">
                 <h2 class="tieude">Thông tin chi tiết sách</h2>
                 <div class="main-show">
@@ -23,7 +25,7 @@
                                                 <tr><td><b>Tác giả: </b> </td><td>{{$course->tacgia}}</td></tr>
                                                 <tr><td><b>Nhà xuất bản:</b></td><td>{{$course->nxb}}</td></tr>
                                                 <tr><td><b>Thể loại:</b></td><td>{{$course->theloai}}</td></tr>                                                <tr></tr>
-                                                <tr><td><b>Giá tiền: </b></td><td>{{$course->giatien}}.000 VND</td></tr>
+                                                <tr><td><b>Giá tiền: </b></td><td>{{$course->giatien}}VNĐ</td></tr>
                                                 <tr><td><b>Số lượng:</b></td><td>{{$course->soluong}}</td></tr>
                                                 <tr><td><b>Trọng lượng: </b></td><td>{{$course->trongluong}}</td></tr>
                                                 <tr><td><b>Số trang: </b></td><td>{{$course->sotrang}}</td></tr>

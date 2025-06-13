@@ -13,6 +13,7 @@ use App\Http\Controllers\UserController;
 Route::get('/courses',[CourseController::class,'index'])->name('course.index');
 Route::get('/courses/create',[CourseController::class,'create'])->name('course.create');
 Route::post('/courses',[CourseController::class,'store'])->name('course.store');
+Route::get('/courses/page', [CourseController::class, 'page'])->name('course.page');
 
 //Tai trang chinh sua
 Route::get('/courses/{course}/edit',[CourseController::class,'edit'])->name('course.edit');
@@ -38,3 +39,4 @@ Route::post('/register', [AuthController::class, 'handleRegister'])->name('regis
 Route::get('/search', [LoginController::class, 'search'])->name('search');
 Route::get('/checkout/{id}', [UserController::class, 'showcheckout'])->name('checkout.show');
 Route::post('/checkout/{id}', [UserController::class, 'processcheckout'])->name('checkout.process');
+
