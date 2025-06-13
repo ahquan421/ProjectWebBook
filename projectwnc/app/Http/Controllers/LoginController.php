@@ -16,11 +16,8 @@ class LoginController extends Controller
         return view('home');
     }
     public function search(Request $request){
-    // Lấy dữ liệu duy nhất từ database để đổ vào dropdown
         $publishers = Course::select('nxb')->distinct()->pluck('nxb');
         $genres = Course::select('theloai')->distinct()->pluck('theloai');
-
-    // Truy vấn tìm kiếm
         $query = Course::query();
 
          if ($request->filled('tensach')) {
@@ -35,9 +32,7 @@ class LoginController extends Controller
         $query->where('theloai', $request->theloai);
         }
         $results = $query->get();
-
-    // Trả về view search.blade.php và truyền dữ liệu
-        return view('search', [
+        return view('user.search', [
             'courses' => $results,
             'publishers' => $publishers,
             'genres' => $genres,
