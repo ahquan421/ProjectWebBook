@@ -40,3 +40,8 @@ Route::get('/search', [LoginController::class, 'search'])->name('search');
 Route::get('/checkout/{id}', [UserController::class, 'showcheckout'])->name('checkout.show');
 Route::post('/checkout/{id}', [UserController::class, 'processcheckout'])->name('checkout.process');
 
+Route::get('/courses/manauser', [CourseController::class, 'manauser'])->name('course.manauser');
+Route::get('/courses/manaorder', [CourseController::class, 'manaorder'])->name('course.manaorder');
+Route::get('/courses/report', [CourseController::class, 'report'])->name('course.report');
+
+Route::delete('/users/delete/{username}', [CourseController::class, 'deleteUser'])->name('users.delete');

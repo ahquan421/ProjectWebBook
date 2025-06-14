@@ -47,6 +47,7 @@ class AuthController extends Controller
 
     public function handleRegister(Request $request) {
         $request->validate([
+            'email' => 'required',
             'username' => 'required',
             'password' => 'required|min:4',
             'fullname' => 'required|string|max:255',
@@ -54,6 +55,7 @@ class AuthController extends Controller
         ]);
 
         $user = [
+            'email' => $request->email,
             'fullname' => $request->fullname,
             'birthyear' => $request->birthyear,
             'username' => $request->username,

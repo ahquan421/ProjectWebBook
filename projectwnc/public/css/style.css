@@ -15,8 +15,8 @@ body {
 .sidebar {
     
     position: fixed;
-    width: 200px;                    /* Sidebar rộng 200px cố định */
-    background-color: #2c3e50;       /* Màu xanh đen hiện đại */
+    width: 200px;                 
+    background: linear-gradient( #1a1f71 0%, rgb(130, 155, 243) 100%);
     color: white;                    /* Chữ trắng cho sidebar */
     height: 100vh;                   /* Chiều cao chiếm toàn bộ màn hình */
     padding: 20px;                   /* Khoảng cách lề trong sidebar */
@@ -56,12 +56,28 @@ body {
     align-items: center;
     gap: 10px;
 }
-
-/* Hiệu ứng hover cho link trong sidebar */
-.sidebar-table a:hover {
-    background-color: #34495e;       /* Màu nền sáng hơn */
-    color: #00bbff;                  /* Màu chữ xanh ngọc nổi bật */
+.danhmuc:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    background-color: #1a1f71;
+    color: #ffffff;  
 }
+a.danhmuc:focus {
+    background-color: #3f449c;
+}
+.danhmuc.active {
+    background-color: #ffffff;
+    font-weight: bold;
+    box-shadow: inset 4px 0 0 0 white;
+    color: #2c3e50;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.danhmuc.active svg {
+    fill: #2c3e50;
+}
+
+
 
 
 
@@ -71,21 +87,28 @@ body {
 
 /* file index*/
 .main-content {
-    margin-left: 240px;   
+    background-color: #ffffff;
+    margin-left: 220px;   
     flex: 1;                         /* Chiếm toàn bộ không gian còn lại */
-    padding: 20px;                   /* Khoảng cách bên trong */
+    padding: 0px 20px; 
 }
 
 /* Tiêu đề trong nội dung chính */
-.main-content h2 {
-    /*position: fixed;*/
-    font-size: 25px;                 /* Cỡ chữ lớn */
+.tieudechinh h2 {
+    position: fixed;
+    font-size: 25px;
     margin-bottom: 20px;             /* Cách phía dưới */
     margin-top: 0px;
+    width: 100%;
+    color: #ffff;
+    padding: 10px;
+    background: linear-gradient(135deg, #1a1f71 0%, rgb(130, 155, 243) 100%);
 }
 
 /* Bảng hiển thị sách: override bootstrap một số phần nếu cần */
 .table {
+    margin-left: 15px;
+    margin-top: 62px;
     font-size: 15px; 
     width: 100%;                     /* Rộng toàn khối */
     border-collapse: collapse;       /* Gộp viền bảng */
@@ -107,10 +130,11 @@ body {
     font-weight: bold;
 }
 
-/* Tô màu hàng đầu với class .table-primary (Bootstrap hỗ trợ nhưng ta thêm tone nhẹ) */
+
 .table-primary th {
-    background-color: #e0eafc !important;
-    color: #000;
+    
+    background-color: #4e54cd !important;
+    color: #ffffff;
 }
 
 /* Các nút hành động: View, Edit, Delete */
@@ -139,10 +163,13 @@ a.button-link {
 }
 a.button-link:hover {
     background-color: #c7c9df;
+    transform: translateY(-4px);
 }
 
 /* Nút thêm sách mới */
 a.button-add {
+    margin-left: 15px;
+    margin-bottom: 50px;
     background-color: #ffffff; 
     color: #000000;
     padding: 8px 16px;             /* Padding đều */
@@ -157,7 +184,8 @@ a.button-add {
     box-shadow: 0 2px 5px rgba(0.15,0.15,0.15,0.15);
 }
 a.button-add:hover {
-    background-color: #b2b8c0;     /* Màu xanh đậm hơn khi di chuột */
+    background-color: #b2b8c0;
+    transform: translateY(-4px);
 }
 
 /* Form xóa - nút trong form */
@@ -174,7 +202,8 @@ a.button-add:hover {
     cursor: pointer;
 }
 .btn-danger:hover {
-    background-color: #ff0000;
+    background-color: #e84c4c;
+    transform: translateY(-4px);
 }
 .confirm {
     display: inline-flex;
@@ -224,6 +253,8 @@ table img {
 
 /* Layout hiển thị thông tin sách */
 .main-show {
+    margin-left: 15px;
+    margin-top: 62px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -270,6 +301,8 @@ table img {
 }
 
 .thongtin-table {
+    margin-left: 15px;
+    margin-top: 62px;
     width: 100%;
     border-collapse: collapse;
     font-size: 15px;
@@ -305,71 +338,3 @@ table img {
     display: flex;
 }
 
-
-
-
-
-
-form {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    max-width: 500px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    font-family: Arial, sans-serif;
-}
-
-/* Khoảng cách giữa các dòng */
-form div {
-    margin-bottom: 15px;
-}
-
-/* Label */
-form label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-/* Input text & file */
-form input[type="text"],
-form input[type="file"] {
-    width: 100%;
-    padding: 8px 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-/* Nút quay lại */
-.button-link {
-    display: inline-block;
-    background-color: #6c757d;
-    color: #fff;
-    padding: 8px 16px;
-    text-decoration: none;
-    border-radius: 4px;
-    margin-right: 10px;
-}
-
-/* Nút submit */
-form button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-/* Hover hiệu ứng */
-form button:hover {
-    background-color: #0056b3;
-}
-
-.button-link:hover {
-    background-color: #5a6268;
-}

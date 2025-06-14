@@ -6,7 +6,10 @@
         @include('course.header')
         </div>
         <div class="main-content">
-                <h2 class="tieude">Thông tin chi tiết sách</h2>
+                <div class="tieudechinh">
+                        <h2 class="tieude">Thông tin chi tiết sách</h2>
+                </div>
+                
                 <div class="main-show">
                         <div class="ttct">
                                 <div class="img">

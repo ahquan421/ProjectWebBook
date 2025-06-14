@@ -11,8 +11,11 @@
         @include('course.header')
     </div>
     <div class="main-content">
-        <h2 class="tieude">Thêm sách mới</h2>
-        <form method="post" action="{{ route('course.store') }}" enctype="multipart/form-data">
+        <div class="tieudechinh">
+            <h2 class="tieude">Thêm sách mới</h2>
+        </div>
+        
+        <form method="post" action="{{ route('course.store') }}" enctype="multipart/form-data" class="thongtin-table">
             @csrf
             <div>
                 <label for="tensach">Tên sách: </label>

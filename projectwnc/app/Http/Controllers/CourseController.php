@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
@@ -67,5 +68,44 @@ class CourseController extends Controller
     public function page(){
         return view('course.page');
     }
-    
+    public function manaorder(){
+        return view('course.manaorder');
+    }
+    public function report(){
+        return view('course.report');
+    }
+
+
+    public function manauser(){
+    $path = storage_path('app/users.json');
+    if (file_exists($path)) {
+        $json = file_get_contents($path);
+        $users = json_decode($json, true);
+    } else {
+        $users = [];
+    }
+
+    return view('course.manauser', compact('users'));
+    }
+
+
+
+    public function deleteUser($username){
+    $path = storage_path('app/users.json');
+
+    $json = file_get_contents($path);
+    $users = json_decode($json, true);
+
+    // Lọc bỏ user có username cần xoá
+    $filteredUsers = array_filter($users, function ($user) use ($username) {
+        return $user['username'] !== $username;
+    });
+
+    // Ghi đè lại file
+    file_put_contents($path, json_encode(array_values($filteredUsers), JSON_PRETTY_PRINT));
+
+    return redirect()->route('course.manauser')->with('success', 'Đã xoá người dùng.');
+    }
+
+
 }
