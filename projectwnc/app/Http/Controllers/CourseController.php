@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Storage;
 class CourseController extends Controller
 {
     //
+    public function welcome(){
+        return view('welcome');
+    }
     public function index(){
         //list all
         $courses = Course::all(); // có thể tải all các khóa học 
@@ -21,13 +24,18 @@ class CourseController extends Controller
 
     public function store(Request $request){
         $validated = $request->validate([
+            'masach' => 'required|string',
             'tensach' => 'required|string',
             'tacgia' => 'required|string',
             'nxb' => 'required|string',
             'theloai' => 'required|string',
             'giatien' => 'required|numeric',
             'soluong' => 'required|integer',
+            'trongluong' => 'required|integer',
+            'sotrang' => 'required|integer',
+            'ngonngu' => 'required|string',
             'anhminhhoa' => 'required|image|mimes:jpeg,png,jpg,gif,webp,bmp,svg|max:2048',
+            'mota' => 'required|string',
         ]);
 
     // Xử lý upload ảnh
@@ -38,6 +46,7 @@ class CourseController extends Controller
             $validated['anhminhhoa'] = $imageName; 
         }
 
+        
         Course::create($validated);
 
         return redirect()->route('course.index')->with('success', 'Thêm sách thành công');

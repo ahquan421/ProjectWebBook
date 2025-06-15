@@ -33,8 +33,9 @@
         }
 
         .logo-box {
-        text-align: center;
-        max-width: 500px;
+            animation: fadeUp 2s ease-out both;
+            text-align: center;
+            max-width: 500px;
         }
 
         .logo-box img {
@@ -47,6 +48,9 @@
         margin: 0;
         font-weight: bold;
         letter-spacing: 1px;
+        animation: fadeUp 3s ease-out both;
+        animation: pulse 1.5s ease-in-out infinite;
+        display: inline-block;
         }
 
         .desc {
@@ -54,6 +58,7 @@
         opacity: 0.85;
         margin: 15px 0 25px;
         line-height: 1.4;
+        animation: fadeUp 3.5s ease-out both;
         }
 
         .btn-start {
@@ -65,6 +70,7 @@
         cursor: pointer;
         color: #333;
         transition: background-color 0.3s;
+        animation: fadeUp 4s ease-out both;
         }
 
         .btn-start:hover {
@@ -119,19 +125,19 @@
         }
 
         .btn-login {
-        width: 100%;
-        padding: 12px;
-        border: none;
-        border-radius: 25px;
-        background: linear-gradient(135deg,rgb(24, 29, 133) 0%,rgb(58, 83, 172) 100%);
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        font-size: 15px;
-        }
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg,rgb(24, 29, 133) 0%,rgb(58, 83, 172) 100%);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+            }
 
         .btn-login:hover {
-        background-color: rgb(8, 98, 194);
+            background-color: rgb(43, 46, 255);
         }
 
         .link-group {
@@ -148,6 +154,32 @@
         color: #007bff;
         text-decoration: none;
         }
+        
+
+        @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(70px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        }
+
+        @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+        }
+
+
     </style>
 </head>
 <body>
@@ -155,20 +187,20 @@
 <div class="container">
     <div class="left">
         <div class="logo-box">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" height="200px" width="200px"><path d="M4 15H6V20H18V4H6V9H4V3C4 2.44772 4.44772 2 5 2H19C19.5523 2 20 2.44772 20 3V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V15ZM10 11V8L15 12L10 16V13H2V11H10Z"></path></svg>
-        <h2 class="logo-text">HELLO, WELCOME!</h2>
-        <p class="desc">
-            Welcome to our online bookstore! <br>
-            A place where the best books gather, inspiring and enlightening <br>
-            for all generations of Vietnamese readers.</p>
-        <button class="btn-start">Get Started</button>
-        <p class="copyright">© 2025 Bookstore VietNam</p>
-    </div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" height="200px" width="200px"><path d="M4 15H6V20H18V4H6V9H4V3C4 2.44772 4.44772 2 5 2H19C19.5523 2 20 2.44772 20 3V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V15ZM10 11V8L15 12L10 16V13H2V11H10Z"></path></svg>
+            <h2 class="logo-text">HELLO, WELCOME!</h2>
+            <p class="desc">
+                Welcome to our online bookstore! <br>
+                A place where the best books gather, inspiring and enlightening <br>
+                for all generations of Vietnamese readers.</p>
+            <button class="btn-start">Get Started</button>
+            <p class="copyright">© 2025 Bookstore VietNam</p>
+        </div>
     </div>
     <div class="right">
         <form class="form-box" method="POST" action="{{ route('login.handle') }}">
             @csrf
-            <h2 style="color: #1a1f71;">Login account!</h2>
+            <h2 style="color: #1a1f71; ">Login account!</h2>
 
             <div class="input-group">
                 <select name="role" required>

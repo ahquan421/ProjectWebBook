@@ -28,7 +28,7 @@ class CourseFactory extends Factory
             'sotrang'     => fake()->numberBetween(50, 1000),
             'ngonngu'     => fake()->randomElement(['Tiếng Việt', 'English', 'Tiếng Pháp']),
             'anhminhhoa'  => fake()->imageUrl(640, 480, 'books', true),
-            'mota'        => fake()->sentence(30),
+            'mota'        => fake()->sentence(50),
         ];
     }
 

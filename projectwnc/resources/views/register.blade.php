@@ -35,6 +35,7 @@
     .logo-box {
       text-align: center;
       max-width: 500px;
+      animation: fadeUp 2s ease-out both;
     }
 
     .logo-box img {
@@ -47,6 +48,9 @@
       margin: 0;
       font-weight: bold;
       letter-spacing: 1px;
+      animation: fadeUp 3s ease-out both;
+      animation: pulse 1.5s ease-in-out infinite;
+      display: inline-block;
     }
 
     .desc {
@@ -54,6 +58,7 @@
       opacity: 0.85;
       margin: 15px 0 25px;
       line-height: 1.4;
+      animation: fadeUp 3.5s ease-out both;
     }
 
     .btn-start {
@@ -65,6 +70,7 @@
       cursor: pointer;
       color: #333;
       transition: background-color 0.3s;
+      animation: fadeUp 4s ease-out both;
     }
 
     .btn-start:hover {
@@ -145,6 +151,34 @@
     .link-group a:hover {
       color: rgb(7, 78, 155);
     }
+
+
+
+
+
+     @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(70px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        }
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+        }
+
+        
   </style>
 </head>
 <body>
@@ -167,26 +201,26 @@
     <div class="right">
       <form class="form-box" method="POST" action="{{ route('register.handle') }}">
         @csrf
-        <h2 style="color: #1a1f71;">Sign up for an account!</h2>
+        <h2 style="color:rgb(31, 38, 176);">Sign up for an account!</h2>
 
         <div class="input-group">
           <input type="email" name="email" placeholder="Email" required>
         </div>
 
         <div class="input-group">
-          <input type="text" name="fullname" placeholder="Họ tên" required>
+          <input type="text" name="fullname" placeholder="Full name" required>
         </div>
 
         <div class="input-group">
-          <input type="number" name="birthyear" placeholder="Năm sinh" min="1900" max="2100" required>
+          <input type="number" name="birthyear" placeholder="Birthyear" min="1900" max="2100" required>
         </div>
 
         <div class="input-group">
-          <input type="text" name="username" placeholder="Tài khoản" required>
+          <input type="text" name="username" placeholder="Username" required>
         </div>
 
         <div class="input-group">
-          <input type="password" name="password" placeholder="Mật khẩu" required>
+          <input type="password" name="password" placeholder="Password" required>
         </div>
 
         <button class="btn-register" type="submit">Sign up</button>

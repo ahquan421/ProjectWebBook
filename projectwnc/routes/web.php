@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 //     return view('welcome');
 // });
 
+Route::get('/',[CourseController::class,'welcome'])->name('welcome');
 Route::get('/courses',[CourseController::class,'index'])->name('course.index');
 Route::get('/courses/create',[CourseController::class,'create'])->name('course.create');
 Route::post('/courses',[CourseController::class,'store'])->name('course.store');

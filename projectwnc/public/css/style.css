@@ -66,7 +66,7 @@ a.danhmuc:focus {
     background-color: #3f449c;
 }
 .danhmuc.active {
-    background-color: #ffffff;
+    background-color: #f5f6ff;
     font-weight: bold;
     box-shadow: inset 4px 0 0 0 white;
     color: #2c3e50;
@@ -87,7 +87,7 @@ a.danhmuc:focus {
 
 /* file index*/
 .main-content {
-    background-color: #ffffff;
+    background-color: #f5f6ff;
     margin-left: 220px;   
     flex: 1;                         /* Chiếm toàn bộ không gian còn lại */
     padding: 0px 20px; 
@@ -104,16 +104,20 @@ a.danhmuc:focus {
     padding: 10px;
     background: linear-gradient(135deg, #1a1f71 0%, rgb(130, 155, 243) 100%);
 }
+h2.tieude{
+    padding-left: 20px;
+}
 
 /* Bảng hiển thị sách: override bootstrap một số phần nếu cần */
 .table {
+    border-radius: 10px;
     margin-left: 15px;
     margin-top: 62px;
     font-size: 15px; 
     width: 100%;                     /* Rộng toàn khối */
     border-collapse: collapse;       /* Gộp viền bảng */
-    background-color: #ffffff;       /* Nền trắng */
-    box-shadow: 0 2px 5px rgba(0.15,0.15,0.15,0.15); /* Bóng nhẹ */
+    background-color: #ffffff; 
+    box-shadow: 0 2px 5px rgba(0.15,0.15,0.15,0.15);
     margin-bottom: 20px;
 }
 
@@ -132,8 +136,7 @@ a.danhmuc:focus {
 
 
 .table-primary th {
-    
-    background-color: #4e54cd !important;
+    background-color: #2f3494 !important;
     color: #ffffff;
 }
 
@@ -178,18 +181,20 @@ a.button-add {
     font-size: 14px;
     font-weight: bold;
     display: inline-flex;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
     align-items: center;
     gap: 8px;
     box-shadow: 0 2px 5px rgba(0.15,0.15,0.15,0.15);
 }
 a.button-add:hover {
-    background-color: #b2b8c0;
+    background-color: #393cde;
     transform: translateY(-4px);
+    color: #fff;
 }
 
 /* Form xóa - nút trong form */
 .btn-danger {
+    transition: all 0.2s ease;
     display: inline-flex;
     gap: 8px;
     padding: 10px 16px;
@@ -202,8 +207,9 @@ a.button-add:hover {
     cursor: pointer;
 }
 .btn-danger:hover {
-    background-color: #e84c4c;
+    background-color: #e71b1b;
     transform: translateY(-4px);
+    color: #fff;
 }
 .confirm {
     display: inline-flex;
@@ -252,89 +258,130 @@ table img {
 }
 
 /* Layout hiển thị thông tin sách */
+/* Khung tổng */
 .main-show {
     margin-left: 15px;
     margin-top: 62px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 }
 
-/* Hàng đầu gồm ảnh và thông tin */
-.img,
-.thongtin {
-    display: inline-block;
-    vertical-align: top;
+.ttct {
+    display: flex;
+    gap: 15px;
+}
+
+/* CỘT TRÁI: ảnh sách + nút */
+.left-column {
+    box-shadow: 0 2px 5px rgba(0.15,0.15,0.15,0.15);
+    border-radius: 10px;
+    width: 30%;
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
 /* Ảnh sách */
 .img {
-    justify-content: center; /* căn giữa ngang */
-    align-items: center;
-    width:15%;
-    padding-left: 0px;
-    padding-right: 20px;
-    
+    width: 100%;
+    max-width: 280px;
+    max-height: 450px;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
 }
 
 .img img {
-    
     width: 100%;
-    max-width: 220px;
-}
-
-/* Thông tin sách */
-.thongtin {
-    width: 50%;
-    max-width: 700px;
-    background: #fff;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-family: 'Segoe UI', sans-serif;
-    box-shadow: 0 0 8px rgba(0,0,0,0.05);
-}
-
-.thongtin h2 {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.thongtin-table {
-    margin-left: 15px;
-    margin-top: 62px;
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 15px;
-    color: #333;
-}
-
-.thongtin-table td {
-    padding: 10px 8px;
-    border-bottom: 1px solid #eee;
-}
-
-.thongtin-table td:first-child {
-    font-weight: 500;
-    color: #666;
-    width: 20%;
+    height: auto;
+    max-height: 380px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 
 
-/* Mô tả sản phẩm */
-.mota {
-    width:40%;
-    padding: 10px 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
 
-.mota h2 {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-.ttct {
-    margin-top: 0px;
+
+/* Vùng chứa các nút tác vụ */
+.tacvu {
     display: flex;
 }
 
+/* CỘT PHẢI: thông tin và mô tả */
+.right-column {
+    
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Phần trên: tên sách - tác giả - NXB - giá */
+.book-header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-radius: 10px;
+    font-size: 25px;
+    box-shadow: 0 2px 5px rgba(0.15,0.15,0.15,0.15);
+    padding-left: 25px;
+    background-color: #ffffff;
+}
+
+.book-price {
+    flex-basis: 100%;
+    text-align: left;
+    font-size: 30px;
+    color: #ff150c;
+}
+
+/* Phần dưới: chi tiết sách + mô tả */
+.book-details {
+    display: flex;
+    gap: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0.15,0.15,0.15,0.15);
+    padding: 12px;
+    padding-left: 20px;
+    background-color: #ffffff;
+    font-size: 18px;
+}
+.detail-left,
+.detail-right {
+    flex: 1;
+    
+}
+.detail-right{
+    line-height: 1.8;
+}
+
+.book-header input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 250px;
+}
+.book-details label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #333;
+    font-weight: bold;
+}
+.mota{
+    width: 80%;
+    height: 200px;
+    padding: 8px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.book-details input {
+    width: 80%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
