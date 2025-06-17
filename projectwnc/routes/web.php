@@ -46,3 +46,4 @@ Route::get('/courses/manaorder', [CourseController::class, 'manaorder'])->name('
 Route::get('/courses/report', [CourseController::class, 'report'])->name('course.report');
 
 Route::delete('/users/delete/{username}', [CourseController::class, 'deleteUser'])->name('users.delete');
+Route::get('/orders/history', [UserController::class, 'order'])->name('user.order');

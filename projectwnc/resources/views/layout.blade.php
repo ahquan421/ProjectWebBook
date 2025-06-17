@@ -50,7 +50,7 @@
         <nav>
             <a href="{{ route('home') }}">Trang chủ</a>
             <a href="{{ route('search') }}">Tìm sách</a>
-            <a href="#">Liên hệ</a>
+            <a href="{{ route('user.order')}}">Liên hệ</a>
             <a href="{{ route('login') }}">Đăng nhập</a>
         </nav>
     </header>
