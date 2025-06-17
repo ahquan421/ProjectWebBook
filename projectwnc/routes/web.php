@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 //     return view('welcome');
 // });
 
+Route::get('/',[CourseController::class,'welcome'])->name('welcome');
 Route::get('/courses',[CourseController::class,'index'])->name('course.index');
 Route::get('/courses/create',[CourseController::class,'create'])->name('course.create');
 Route::post('/courses',[CourseController::class,'store'])->name('course.store');
@@ -40,3 +41,8 @@ Route::get('/search', [LoginController::class, 'search'])->name('search');
 Route::get('/checkout/{id}', [UserController::class, 'showcheckout'])->name('checkout.show');
 Route::post('/checkout/{id}', [UserController::class, 'processcheckout'])->name('checkout.process');
 
+Route::get('/courses/manauser', [CourseController::class, 'manauser'])->name('course.manauser');
+Route::get('/courses/manaorder', [CourseController::class, 'manaorder'])->name('course.manaorder');
+Route::get('/courses/report', [CourseController::class, 'report'])->name('course.report');
+
+Route::delete('/users/delete/{username}', [CourseController::class, 'deleteUser'])->name('users.delete');

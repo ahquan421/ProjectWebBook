@@ -20,7 +20,11 @@ return new class extends Migration
             $table->string('theloai');
             $table->integer('giatien');
             $table->integer('soluong');
+            $table->integer('trongluong');
+            $table->integer('sotrang');
+            $table->string('ngonngu');
             $table->string('anhminhhoa');
+            $table->text('mota');
             $table->timestamps();
         });
     }

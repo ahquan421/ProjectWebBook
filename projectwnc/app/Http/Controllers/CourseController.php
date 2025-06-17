@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
     //
+    public function welcome(){
+        return view('welcome');
+    }
     public function index(){
         //list all
         $courses = Course::all(); // có thể tải all các khóa học 
@@ -20,13 +24,18 @@ class CourseController extends Controller
 
     public function store(Request $request){
         $validated = $request->validate([
+            'masach' => 'required|string',
             'tensach' => 'required|string',
             'tacgia' => 'required|string',
             'nxb' => 'required|string',
             'theloai' => 'required|string',
             'giatien' => 'required|numeric',
             'soluong' => 'required|integer',
+            'trongluong' => 'required|integer',
+            'sotrang' => 'required|integer',
+            'ngonngu' => 'required|string',
             'anhminhhoa' => 'required|image|mimes:jpeg,png,jpg,gif,webp,bmp,svg|max:2048',
+            'mota' => 'required|string',
         ]);
 
     // Xử lý upload ảnh
@@ -37,6 +46,7 @@ class CourseController extends Controller
             $validated['anhminhhoa'] = $imageName; 
         }
 
+        
         Course::create($validated);
 
         return redirect()->route('course.index')->with('success', 'Thêm sách thành công');
@@ -67,5 +77,44 @@ class CourseController extends Controller
     public function page(){
         return view('course.page');
     }
-    
+    public function manaorder(){
+        return view('course.manaorder');
+    }
+    public function report(){
+        return view('course.report');
+    }
+
+
+    public function manauser(){
+    $path = storage_path('app/users.json');
+    if (file_exists($path)) {
+        $json = file_get_contents($path);
+        $users = json_decode($json, true);
+    } else {
+        $users = [];
+    }
+
+    return view('course.manauser', compact('users'));
+    }
+
+
+
+    public function deleteUser($username){
+    $path = storage_path('app/users.json');
+
+    $json = file_get_contents($path);
+    $users = json_decode($json, true);
+
+    // Lọc bỏ user có username cần xoá
+    $filteredUsers = array_filter($users, function ($user) use ($username) {
+        return $user['username'] !== $username;
+    });
+
+    // Ghi đè lại file
+    file_put_contents($path, json_encode(array_values($filteredUsers), JSON_PRETTY_PRINT));
+
+    return redirect()->route('course.manauser')->with('success', 'Đã xoá người dùng.');
+    }
+
+
 }

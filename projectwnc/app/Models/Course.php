@@ -8,5 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
-    protected $fillable = ['tensach','tacgia','nxb','theloai','giatien','soluong','anhminhhoa'];
+    protected $fillable = [
+        'masach',
+        'tensach',
+        'tacgia',
+        'nxb',
+        'theloai',
+        'giatien',
+        'soluong',
+        'trongluong',
+        'sotrang',
+        'ngonngu',
+        'anhminhhoa',
+        'mota',
+    ];
 }

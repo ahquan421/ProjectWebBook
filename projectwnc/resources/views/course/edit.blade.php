@@ -7,11 +7,11 @@
         @include('course.header')
     </div>
     <div class="main-content">
-        <h2 class="tieude">Chỉnh sửa chi tiết sách</h2>
-        {{-- Day la phuong phap them csdl 
-        <form method="post" action="{{ 'course.store' }}"></form>
-        --}}
-        <form method="post" action="{{ route('course.update',$course->id) }}" class="thongtin-table">
+        <div class="tieudechinh">
+            <h2 class="tieude">Chỉnh sửa chi tiết sách</h2>
+        </div>
+        
+        <form method="post" action="{{ route('course.update',$course->id) }}" class="main-show">
             @csrf
             @method('PUT') {{-- -Đưa dữ liệu vào máy chủ --}}
             <div>
