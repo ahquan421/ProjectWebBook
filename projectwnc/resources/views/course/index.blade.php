@@ -12,6 +12,21 @@
     <div class="main-content"> {{-- ✅ THÊM div bọc nội dung phải --}}
         <div class="tieudechinh">
             <h2 class="tieude">Quản lý sách trong kho</h2>
+            <div class="search-container">
+                <div >
+                    <a href="{{ route('course.create') }}" class="button-add">
+                        Thêm sách mới
+                    </a>
+                </div>
+                <select id="sortSelect" class="sortSelect">
+                    <option value="">Sắp xếp</option>
+                    <option value="name-asc">Tên sách A → Z .</option>
+                    <option value="name-desc">Tên sách Z → A .</option>
+                    <option value="soluong-asc">Số lượng tăng .</option>
+                    <option value="soluong-desc">Số lượng giảm .</option>
+                </select>
+                <input class="searchInput" type="text" id="searchInput" placeholder="Tìm kiếm...">
+            </div>
         </div>
         
         <table id="trangqly" class="table table-striped table-bordered">
@@ -27,7 +42,7 @@
                     <th>Tác vụ</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="bookTable">
                 @foreach ($courses as $index => $course)
                 <tr>
                     <td>{{ $index + 1 }}</td>
@@ -52,14 +67,58 @@
         </table>
 
         <!-- Nút thêm sách mới -->
-        <div >
-            <a href="{{ route('course.create') }}" class="button-add">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                    <path d="M7.75 2a.75.75 0 0 1 .75.75V7h4.25a.75.75 0 0 1 0 1.5H8.5v4.25a.75.75 0 0 1-1.5 0V8.5H2.75a.75.75 0 0 1 0-1.5H7V2.75A.75.75 0 0 1 7.75 2Z"></path>
-            </svg>
-                Thêm sách mới
-            </a>
-        </div>
+        
     </div>
+
+    <script>
+        document.getElementById("searchInput").addEventListener("keyup", function () {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll("#bookTable tr");
+
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        });
+        document.getElementById('sortSelect').addEventListener('change', function () {
+    const value = this.value;
+    const rows = Array.from(document.querySelectorAll('#bookTable tr'));
+
+    let column = -1;
+    let type = 'text';
+    let asc = true;
+
+    if (value === 'name-asc') {
+        column = 1; type = 'text'; asc = true;
+    } else if (value === 'name-desc') {
+        column = 1; type = 'text'; asc = false;
+    } else if (value === 'soluong-asc') {
+        column = 6; type = 'number'; asc = true;
+    } else if (value === 'soluong-desc') {
+        column = 6; type = 'number'; asc = false;
+    }
+
+    if (column >= 0) {
+        rows.sort((a, b) => {
+            const cellA = a.children[column].textContent.trim();
+            const cellB = b.children[column].textContent.trim();
+
+            if (type === 'number') {
+                return asc ? cellA - cellB : cellB - cellA;
+            } else {
+                return asc ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+            }
+        });
+
+        const table = document.getElementById('bookTable');
+        rows.forEach(row => table.appendChild(row));
+    }
+});
+    </script>
+
 </div> {{-- ✅ KẾT THÚC layout --}}
 @endsection

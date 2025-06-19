@@ -62,12 +62,43 @@ class CourseController extends Controller
         $course = Course::find($id);
         return view('course.edit',compact('course'));
     }
-    public function update(Request $request, $id){
-        //Logic để cập nhật bản ghi trong cơ sở dữ liệu và thực hiện một hành động sau đó
-        //vui long xac thuc yeu cau truoc khi cap nhat
-        Course::find($id)->update($request->all());
-        return redirect()->route('course.index');
+    public function update(Request $request, $id)
+    {
+        $course = Course::findOrFail($id);
+
+        $validated = $request->validate([
+            'masach' => 'required|string',
+            'tensach' => 'required|string',
+            'tacgia' => 'required|string',
+            'nxb' => 'required|string',
+            'theloai' => 'required|string',
+            'giatien' => 'required|numeric',
+            'soluong' => 'required|integer',
+            'trongluong' => 'required|integer',
+            'sotrang' => 'required|integer',
+            'ngonngu' => 'required|string',
+            'mota' => 'required|string',
+            'anhminhhoa' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp,bmp,svg|max:2048',
+        ]);
+
+        // Nếu người dùng chọn ảnh mới, lưu ảnh mới
+        if ($request->hasFile('anhminhhoa')) {
+            $image = $request->file('anhminhhoa');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+            $validated['anhminhhoa'] = $imageName;
+        }
+
+        // Nếu không chọn ảnh mới, giữ ảnh cũ
+        else {
+            unset($validated['anhminhhoa']);
+        }
+
+        $course->update($validated);
+
+        return redirect()->route('course.show', $course->id)->with('success', 'Cập nhật sách thành công');
     }
+
     public function destroy($id){
         //Delete the entry from the database
         //xac thua yeu cau csdl dua tren dl ma ban dươc cung cap

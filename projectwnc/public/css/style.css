@@ -85,6 +85,7 @@ a.danhmuc:focus {
 
 
 
+
 /* file index*/
 .main-content {
     background-color: #f5f6ff;
@@ -93,26 +94,111 @@ a.danhmuc:focus {
     padding: 0px 20px; 
 }
 
-/* Tiêu đề trong nội dung chính */
-.tieudechinh h2 {
+
+
+
+
+.tieudechinh {
     position: fixed;
-    font-size: 25px;
-    margin-bottom: 20px;             /* Cách phía dưới */
-    margin-top: 0px;
-    width: 100%;
-    color: #ffff;
-    padding: 10px;
+    width: 95%;
     background: linear-gradient(135deg, #1a1f71 0%, rgb(130, 155, 243) 100%);
-}
-h2.tieude{
-    padding-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 1000;
 }
 
-/* Bảng hiển thị sách: override bootstrap một số phần nếu cần */
+/* Tiêu đề bên trái */
+.tieudechinh h2.tieude {
+    font-size: 25px;
+    color: #fff;
+    font-weight: normal;
+    margin: 5px;
+}
+
+/* Ô tìm kiếm bên phải */
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.searchInput {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #243e7c; 
+    color: white;
+    margin-right: 200px;
+    font-size: 14px;
+    outline: none;
+    width: 320px;
+    border: 1px solid #243e7c;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.288);
+}
+
+.searchInput::placeholder {
+    color: #a8b4d4;
+}
+.searchInput:focus{
+    border: 1px solid rgb(166, 171, 255);
+    box-shadow: 2px 2px 2px rgb(127, 124, 124);
+}
+.searchInput:hover {
+    background-color: #11137e;
+    color: #fff;
+}
+
+
+.sortSelect {
+    width:87px;
+    padding: 11px 16px;
+    border: none;
+    border-radius: 20px;
+    background-color: #243e7c;
+    color: white;
+    font-size: 14px;
+    outline: none;
+    appearance: none;
+    margin-right: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.288);
+    
+}
+.sortSelect:focus{
+    background-color: #0f2964;
+}
+.sortSelect:hover {
+    background-color: #11137e;
+    color: #fff;
+}
+
+a.button-add {
+    padding: 11px 16px;
+    border: none;
+    border-radius: 20px;
+    background-color: #243e7c;
+    color: white;
+    font-size: 14px;
+    margin-right: 10px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.288);
+}
+a.button-add:hover {
+    background-color: #11137e;
+    color: #fff;
+}
+
+
+
+
+
+
+
 .table {
     border-radius: 10px;
     margin-left: 15px;
-    margin-top: 62px;
+    margin-top: 70px;
     font-size: 15px; 
     width: 100%;                     /* Rộng toàn khối */
     border-collapse: collapse;       /* Gộp viền bảng */
@@ -169,28 +255,6 @@ a.button-link:hover {
     transform: translateY(-4px);
 }
 
-/* Nút thêm sách mới */
-a.button-add {
-    margin-left: 15px;
-    margin-bottom: 50px;
-    background-color: #ffffff; 
-    color: #000000;
-    padding: 8px 16px;             /* Padding đều */
-    border-radius: 4px;            /* Bo góc */
-    text-decoration: none;         /* Bỏ gạch chân */
-    font-size: 14px;
-    font-weight: bold;
-    display: inline-flex;
-    transition: all 0.2s ease;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 2px 5px rgba(0.15,0.15,0.15,0.15);
-}
-a.button-add:hover {
-    background-color: #393cde;
-    transform: translateY(-4px);
-    color: #fff;
-}
 
 /* Form xóa - nút trong form */
 .btn-danger {
@@ -261,7 +325,7 @@ table img {
 /* Khung tổng */
 .main-show {
     margin-left: 15px;
-    margin-top: 62px;
+    margin-top: 70px;
 }
 
 .ttct {
@@ -295,7 +359,7 @@ table img {
 .img img {
     width: 100%;
     height: auto;
-    max-height: 380px;
+    max-height: 400px;
     object-fit: contain;
     display: block;
     margin: 0 auto;
