@@ -17,6 +17,10 @@ class UserController extends Controller
         $book = Course::findOrFail($id);
         return view('user.checkout', compact('book'));
     }
+    public function showBookDetail($id){
+        $book = Course::findOrFail($id);
+        return view('user.detail', compact('book'));
+    }
 
     // Xử lý thanh toán
     public function processCheckout(Request $request, $id)
@@ -33,7 +37,6 @@ class UserController extends Controller
                     'total_price' => $book->giatien,
                 ]);
             }
-
             // Lưu tên sách và đường quay lại
             session()->flash('success_book_name', $book->tensach);
             session()->flash('back_url', url()->previous());

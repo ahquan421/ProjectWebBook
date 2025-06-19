@@ -47,3 +47,4 @@ Route::get('/courses/report', [CourseController::class, 'report'])->name('course
 
 Route::delete('/users/delete/{username}', [CourseController::class, 'deleteUser'])->name('users.delete');
 Route::get('/orders/history', [UserController::class, 'order'])->name('user.order');
+Route::get('/book/{id}', [UserController::class, 'showBookDetail'])->name('user.detail');

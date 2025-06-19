@@ -9,7 +9,7 @@
         @foreach ($newBooks as $book)
             <div class="col-md-3 mb-4">
                 <div class="card h-100 shadow-sm">
-                    <a href="{{ route('checkout.show', $book->id) }}">
+                    <a href="{{ route('user.detail', $book->id) }}">
                         <img src="{{ asset('images/' . $book->anhminhhoa) }}" class="card-img-top" style="height: 250px; object-fit: cover;">
                     </a>
                     <div class="card-body">
@@ -18,7 +18,7 @@
                             <strong>Tác giả:</strong> {{ $book->tacgia }}<br>
                             <strong>Giá:</strong> {{ number_format($book->giatien) }}đ
                         </p>
-                        <a href="{{ route('checkout.show', $book->id) }}" class="btn btn-primary">🛒 Mua ngay</a>
+                        <a href="{{ route('user.detail', $book->id) }}" class="btn btn-outline-primary">📖 Xem chi tiết</a>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
         @foreach ($discountedBooks as $book)
             <div class="col-md-3 mb-4">
                 <div class="card h-100 shadow-sm">
-                    <a href="{{ route('checkout.show', $book->id) }}">
+                    <a href="{{ route('user.detail', $book->id) }}">
                         <img src="{{ asset('images/' . $book->anhminhhoa) }}" class="card-img-top" style="height: 250px; object-fit: cover;">
                     </a>
                     <div class="card-body">
@@ -40,7 +40,7 @@
                             <strong>Tác giả:</strong> {{ $book->tacgia }}<br>
                             <strong>Giá:</strong> <span class="text-danger">{{ number_format($book->giatien) }}đ</span>
                         </p>
-                        <a href="{{ route('checkout.show', $book->id) }}" class="btn btn-primary">🛒 Mua ngay</a>
+                        <a href="{{ route('user.detail', $book->id) }}" class="btn btn-outline-primary">📖 Xem chi tiết</a>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
         @foreach ($almostOutBooks as $book)
             <div class="col-md-3 mb-4 position-relative">
                 <div class="card h-100 shadow-sm">
-                    <a href="{{ route('checkout.show', $book->id) }}">
+                    <a href="{{ route('user.detail', $book->id) }}">
                         <img src="{{ asset('images/' . $book->anhminhhoa) }}" class="card-img-top" style="height: 250px; object-fit: cover;">
                     </a>
                     <span class="badge bg-danger position-absolute top-0 start-0 m-2">Còn {{ $book->soluong }}</span>
@@ -63,7 +63,7 @@
                             <strong>Tác giả:</strong> {{ $book->tacgia }}<br>
                             <strong>Giá:</strong> {{ number_format($book->giatien) }}đ
                         </p>
-                        <a href="{{ route('checkout.show', $book->id) }}" class="btn btn-primary">🛒 Mua ngay</a>
+                        <a href="{{ route('user.detail', $book->id) }}" class="btn btn-outline-primary">📖 Xem chi tiết</a>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
         @foreach ($featuredBooks as $book)
             <div class="col-md-3 mb-4">
                 <div class="card h-100 shadow-sm">
-                    <a href="{{ route('checkout.show', $book->id) }}">
+                    <a href="{{ route('user.detail', $book->id) }}">
                         <img src="{{ asset('images/' . $book->anhminhhoa) }}" class="card-img-top" style="height: 250px; object-fit: cover;">
                     </a>
                     <div class="card-body">
@@ -85,7 +85,7 @@
                             <strong>Tác giả:</strong> {{ $book->tacgia }}<br>
                             <strong>Giá:</strong> {{ number_format($book->giatien) }}đ
                         </p>
-                        <a href="{{ route('checkout.show', $book->id) }}" class="btn btn-primary">🛒 Mua ngay</a>
+                        <a href="{{ route('user.detail', $book->id) }}" class="btn btn-outline-primary">📖 Xem chi tiết</a>
                     </div>
                 </div>
             </div>
