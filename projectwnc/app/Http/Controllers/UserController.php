@@ -23,29 +23,41 @@ class UserController extends Controller
     }
 
     // Xử lý thanh toán
-    public function processCheckout(Request $request, $id)
-    {
+    public function processCheckout(Request $request, $id){
         $book = Course::findOrFail($id);
 
-        if ($book->soluong > 0) {
-            $book->decrement('soluong');
-            if (Auth::check()) {
-                Order::create([
-                    'user_id' => Auth::id(),
-                    'course_id' => $book->id,
-                    'quantity' => 1,
-                    'total_price' => $book->giatien,
-                ]);
-            }
-            // Lưu tên sách và đường quay lại
-            session()->flash('success_book_name', $book->tensach);
-            session()->flash('back_url', url()->previous());
+    // Lấy số lượng và mã giảm giá từ form
+        $quantity = (int) $request->input('quantity', 1);
+        $coupon = strtoupper(trim($request->input('coupon')));
+        if ($quantity < 1 || $quantity > $book->soluong) {
+            return back()->with('error', 'Số lượng không hợp lệ hoặc vượt quá tồn kho!');
+    }
+        $price = $book->giatien;
+        $total = $price * $quantity;
 
-            return view('user.success');
+    // Giảm giá nếu có mã hợp lệ
+        if ($coupon === 'WNC') {
+             $total *= 0.9; // giảm 10%
         }
 
-        return back()->with('error', 'Sách đã hết hàng!');
+        $book->decrement('soluong', $quantity);
+
+    // Tạo đơn hàng nếu đăng nhập
+        if (Auth::check()) {
+             Order::create([
+                'user_id'     => Auth::id(),
+                'course_id'   => $book->id,
+                'quantity'    => $quantity,
+                'total_price' => $total,
+            ]);
     }
+
+        session()->flash('success_book_name', $book->tensach);
+        session()->flash('back_url', url()->previous());
+
+        return view('user.success');
+}
+
 
     // Giao diện sau khi thanh toán thành công
     public function success()

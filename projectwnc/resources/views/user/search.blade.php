@@ -49,7 +49,7 @@
             @foreach($courses as $book)
                 <div class="col-md-3 mb-4">
                     <div class="card h-100 shadow-sm">
-                        <a href="{{ route('checkout.show', $book->id) }}">
+                        <a href="{{ route('user.detail', $book->id) }}">
                             <img src="{{ asset('images/' . $book->anhminhhoa) }}" class="card-img-top" style="height: 200px; object-fit: cover;">
                         </a>
                         <div class="card-body">
