@@ -24,7 +24,11 @@ class CourseFactory extends Factory
             'theloai'    => fake()->randomElement(['Văn học', 'Khoa học', 'Giáo dục', 'Kỹ năng']),
             'giatien'    => fake()->numberBetween(50000, 500000),
             'soluong'    => fake()->numberBetween(1, 100),
+            'sotrang'     => fake()->numberBetween(50, 500),
+            'ngonngu'     => fake()->randomElement(['Tiếng Việt', 'Tiếng Anh']),
             'anhminhhoa' => fake()->imageUrl(640, 480, 'books', true),
+            'mota'        => fake()->paragraph(),
+            'trongluong'  => fake()->numberBetween(100, 1000),
         ];
     }
 }

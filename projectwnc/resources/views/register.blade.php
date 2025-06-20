@@ -210,11 +210,7 @@
         <div class="input-group">
           <input type="text" name="fullname" placeholder="Full name" required>
         </div>
-
-        <div class="input-group">
-          <input type="number" name="birthyear" placeholder="Birthyear" min="1900" max="2100" required>
-        </div>
-
+        
         <div class="input-group">
           <input type="text" name="username" placeholder="Username" required>
         </div>

@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function showLogin() {
-        return view('login');
-    }
-
-    public function handleLogin(Request $request) {
+    public function handleLogin(Request $request)
+    {
         $role = $request->role;
         $username = $request->username;
         $password = $request->password;
 
         if ($role === 'admin') {
-            // Dữ liệu admin có thể cứng hoặc từ DB
+            // Đăng nhập admin cố định
             if ($username === 'admin' && $password === '123456') {
                 return redirect()->route('course.page');
             } else {
@@ -26,48 +25,45 @@ class AuthController extends Controller
         }
 
         if ($role === 'user') {
-            $path = storage_path('app/users.json');
-            if (File::exists($path)) {
-                $users = json_decode(File::get($path), true);
-                foreach ($users as $user) {
-                    if ($user['username'] === $username && $user['password'] === $password) {
-                        return redirect('/home');
-                    }
-                }
+            // Đăng nhập user từ database
+            $user = User::where('username', $username)->first();
+
+            if ($user && Hash::check($password, $user->password)) {
+                Auth::login($user);
+                return redirect('/home');
+            } else {
+                return back()->with('error', 'Sai thông tin người dùng');
             }
-            return back()->with('error', 'Sai thông tin người dùng');
         }
 
-        return back()->with('error', 'Lỗi hệ thống');
+        return back()->with('error', 'Vai trò không hợp lệ');
     }
 
-    public function showRegister() {
+    public function showLogin()
+    {
+        return view('login');
+    }
+
+    public function showRegister()
+    {
         return view('register');
     }
 
-    public function handleRegister(Request $request) {
-        $request->validate([
-            'email' => 'required',
-            'username' => 'required',
-            'password' => 'required|min:4',
+    public function handleRegister(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => 'required|email|unique:users,email',
             'fullname' => 'required|string|max:255',
-            'birthyear' => 'required|digits:4|integer|min:1900|max:' . date('Y'),
+            'username' => 'required|string|max:255|unique:users,username',
+            'password' => 'required|min:6',
         ]);
 
-        $user = [
-            'email' => $request->email,
-            'fullname' => $request->fullname,
-            'birthyear' => $request->birthyear,
-            'username' => $request->username,
-            'password' => $request->password,
-            
-        ];
-
-        $path = storage_path('app/users.json');
-        $users = File::exists($path) ? json_decode(File::get($path), true) : [];
-        $users[] = $user;
-
-        File::put($path, json_encode($users, JSON_PRETTY_PRINT));
+        User::create([
+            'username' => $validated['username'],
+            'fullname' => $validated['fullname'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+        ]);
 
         return redirect()->route('login')->with('success', 'Đăng ký thành công! Hãy đăng nhập.');
     }

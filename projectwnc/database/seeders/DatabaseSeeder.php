@@ -13,10 +13,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Tạo user mẫu (có thể giữ nguyên hoặc bỏ nếu không dùng)
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        //User::factory()->create([
+        //    'name' => 'Test User',
+          //  'email' => 'test@example.com',
+        //]);
 
         // Gọi seeder cho bảng courses
         $this->call(CourseSeeder::class);
