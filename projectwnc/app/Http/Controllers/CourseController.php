@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
 
 class CourseController extends Controller
 {
@@ -116,35 +117,28 @@ class CourseController extends Controller
     }
 
 
-    public function manauser(){
-    $path = storage_path('app/users.json');
-    if (file_exists($path)) {
-        $json = file_get_contents($path);
-        $users = json_decode($json, true);
-    } else {
-        $users = [];
-    }
-
+    public function manauser() {
+    $users = User::all(); // Lấy tất cả user từ bảng users trong DB
     return view('course.manauser', compact('users'));
-    }
+
+}
 
 
 
-    public function deleteUser($username){
-    $path = storage_path('app/users.json');
+    public function deleteUser($username)
+    {
+        // Tìm user theo username
+        $user = User::where('username', $username)->first();
 
-    $json = file_get_contents($path);
-    $users = json_decode($json, true);
+        // Nếu không tìm thấy user thì thông báo lỗi
+        if (!$user) {
+            return redirect()->route('course.manauser')->with('error', 'Không tìm thấy người dùng.');
+        }
 
-    // Lọc bỏ user có username cần xoá
-    $filteredUsers = array_filter($users, function ($user) use ($username) {
-        return $user['username'] !== $username;
-    });
+        // Xoá user
+        $user->delete();
 
-    // Ghi đè lại file
-    file_put_contents($path, json_encode(array_values($filteredUsers), JSON_PRETTY_PRINT));
-
-    return redirect()->route('course.manauser')->with('success', 'Đã xoá người dùng.');
+        return redirect()->route('course.manauser')->with('success', 'Đã xoá người dùng.');
     }
 
 

@@ -27,7 +27,6 @@
                     <th>STT</th>
                     <th>Họ tên</th>
                     <th>Email</th>
-                    <th>Năm sinh</th>
                     <th>Tài khoản</th>
                     <th>Mật Khẩu</th>
                     <th>Hành động</th>
@@ -37,16 +36,15 @@
                 @foreach ($users as $index => $user)
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ $user['fullname'] }}</td>
-                    <td>{{ $user['email'] }}</td>
-                    <td>{{ $user['birthyear'] }}</td>
-                    <td>{{ $user['username'] }}</td>
+                    <td>{{ $user->fullname }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->username }}</td>
                     <td>
-                        <input type="password" value="{{ $user['password'] }}" readonly class="pass">
+                        <input type="password" value="{{ $user->password }}" readonly class="pass">
                         <button type="button" class="nut" onclick="togglePassword(this)">👁</button>
                     </td>
                     <td>
-                        <form method="POST" action="{{ route('users.delete', ['username' => $user['username']]) }}" onsubmit="return confirm('Bạn có chắc muốn xoá người dùng này?');">
+                        <form method="POST" action="{{ route('users.delete', ['username' => $user->username]) }}" onsubmit="return confirm('Bạn có chắc muốn xoá người dùng này?');">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="nut">🗑</button>
