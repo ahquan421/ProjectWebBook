@@ -2,9 +2,7 @@
 
 @section('content')
 
-{{-- Day la phuong phap them csdl 
-<form method="post" action="{{ 'course.store' }}"></form>
---}}
+
 <div class="main-layout">
 
     <div class="sidebar">
@@ -41,7 +39,6 @@
                 <div class="right-column">
                     <div class="book-details">
                         <div class="detail-left">
-                            
                             <div>
                                 <label for="masach">Mã sách: </label>
                                 <input type="text" name="masach" required>
