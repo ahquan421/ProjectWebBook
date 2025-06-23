@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-
+use App\Models\Cart;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,13 +36,11 @@ class UserController extends Controller
         $total = $price * $quantity;
 
     // Giảm giá nếu có mã hợp lệ
-        if ($coupon === 'WNC') {
-             $total *= 0.9; // giảm 10%
+        if ($coupon === 'COLIEN') {
+             $total *= 0.9; 
         }
 
         $book->decrement('soluong', $quantity);
-
-    // Tạo đơn hàng nếu đăng nhập
         if (Auth::check()) {
              Order::create([
                 'user_id'     => Auth::id(),
@@ -50,13 +48,13 @@ class UserController extends Controller
                 'quantity'    => $quantity,
                 'total_price' => $total,
             ]);
-    }
+        }
 
         session()->flash('success_book_name', $book->tensach);
         session()->flash('back_url', url()->previous());
 
         return view('user.success');
-}
+    }
 
 
     // Giao diện sau khi thanh toán thành công
@@ -72,5 +70,34 @@ class UserController extends Controller
             ->get();
 
         return view('user.order', compact('orders'));
+    }
+    public function addToCart($id){
+        $userId = Auth::id();
+
+    // Kiểm tra 
+        $exists = Cart::where('user_id', $userId)->where('course_id', $id)->exists();
+
+         if (!$exists) {
+            Cart::create([
+                'user_id' => $userId,
+                'course_id' => $id,
+            ]);
+        }
+        return back()->with('success', 'Đã thêm vào giỏ hàng!');
+    }
+    public function showCart()
+    {   
+        $cartItems = Cart::with('course')->where('user_id', Auth::id())->get();
+
+     return view('user.cart', compact('cartItems'));
+    }
+    public function removeFromCart($id)
+    {
+        $cart = Cart::where('user_id', Auth::id())->where('course_id', $id)->first();
+        if ($cart) {
+            $cart->delete();
+        }
+
+        return redirect()->route('cart.show')->with('success', 'Đã xóa khỏi giỏ hàng');
     }
 }

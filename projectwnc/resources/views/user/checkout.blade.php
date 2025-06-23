@@ -63,7 +63,7 @@
         let qty = parseInt(quantityInput.value) || 1;
         let total = gia * qty;
 
-        if (couponInput.value.trim().toUpperCase() === 'WNC') {
+        if (couponInput.value.trim().toUpperCase() === 'COLIEN') {
             total = total * 0.9; // Giảm 10%
         }
 

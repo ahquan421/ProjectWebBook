@@ -16,7 +16,7 @@ class LoginController extends Controller
     {
         $newBooks = Course::orderBy('created_at', 'desc')->take(8)->get();
         $discountedBooks = Course::orderBy('giatien', 'asc')->take(8)->get();
-        $almostOutBooks = Course::where('soluong', '<=', 10)->orderBy('soluong')->take(8)->get();
+        $almostOutBooks = Course::where('soluong', '<=', 15)->orderBy('soluong')->take(8)->get();
         $featuredBooks = Course::inRandomOrder()->take(8)->get();
 
         return view('user.home', compact('newBooks', 'discountedBooks', 'almostOutBooks', 'featuredBooks'));
