@@ -49,5 +49,5 @@ Route::delete('/users/delete/{username}', [CourseController::class, 'deleteUser'
 Route::get('/orders/history', [UserController::class, 'order'])->name('user.order');
 Route::get('/book/{id}', [UserController::class, 'showBookDetail'])->name('user.detail');
 Route::post('/cart/add/{id}', [UserController::class, 'addToCart'])->name('cart.add');
-Route::delete('/cart/remove/{id}', [UserController::class, 'removefromCart'])->name('cart.remove');
+Route::delete('/cart/remove/{id}', [UserController::class, 'removeFromCart'])->name('cart.remove');
 Route::get('/cart', [UserController::class, 'showCart'])->name('cart.show');
