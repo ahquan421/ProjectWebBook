@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Models\Course;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReportController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -43,7 +44,6 @@ Route::post('/checkout/{id}', [UserController::class, 'processcheckout'])->name(
 
 Route::get('/courses/manauser', [CourseController::class, 'manauser'])->name('course.manauser');
 Route::get('/courses/manaorder', [CourseController::class, 'manaorder'])->name('course.manaorder');
-Route::get('/courses/report', [CourseController::class, 'report'])->name('course.report');
 
 Route::delete('/users/delete/{username}', [CourseController::class, 'deleteUser'])->name('users.delete');
 Route::get('/orders/history', [UserController::class, 'order'])->name('user.order');
@@ -51,3 +51,6 @@ Route::get('/book/{id}', [UserController::class, 'showBookDetail'])->name('user.
 Route::post('/cart/add/{id}', [UserController::class, 'addToCart'])->name('cart.add');
 Route::delete('/cart/remove/{id}', [UserController::class, 'removefromCart'])->name('cart.remove');
 Route::get('/cart', [UserController::class, 'showCart'])->name('cart.show');
+
+
+Route::get('/courses/report', [ReportController::class, 'report'])->name('course.report');
