@@ -8,7 +8,7 @@
         <div class="card mb-4 shadow-sm border-0">
             <div class="row g-0">
                 <div class="col-md-3">
-                    <img src="{{ $order->course->anhminhhoa }}" alt="Ảnh sách" class="img-fluid rounded-start" style="object-fit: cover; height: 100%;">
+                    <img src="{{ asset('images/' .$order->course->anhminhhoa) }}" alt="Ảnh sách" class="img-fluid rounded-start" style="object-fit: cover; height: 100%;">
                 </div>
                 <div class="col-md-9">
                     <div class="card-body">

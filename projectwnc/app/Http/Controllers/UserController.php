@@ -34,12 +34,10 @@ class UserController extends Controller
     }
         $price = $book->giatien;
         $total = $price * $quantity;
-
     // Giảm giá nếu có mã hợp lệ
         if ($coupon === 'COLIEN') {
              $total *= 0.9; 
         }
-
         $book->decrement('soluong', $quantity);
         if (Auth::check()) {
              Order::create([
@@ -93,7 +91,7 @@ class UserController extends Controller
     }
     public function removeFromCart($id)
     {
-        $cart = Cart::where('user_id', Auth::id())->where('course_id', $id)->first();
+        $cart = Cart::where('id', $id)->where('user_id', Auth::id())->first();
         if ($cart) {
             $cart->delete();
         }
