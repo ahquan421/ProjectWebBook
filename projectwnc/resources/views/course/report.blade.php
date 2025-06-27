@@ -11,10 +11,10 @@
             <h2 class="tieude">Thống kê & Báo cáo</h2>
         </div>
         <div class="thongtinchung">
-            <div class="soluong">
+            <a href="{{ route('course.manaorder') }}" class="soluong">
                 <div class="fw-bold">Số lượng bán</div>
                 <h3>{{ number_format($totalSold) }}</h3>
-            </div>
+            </a>
             <div class="tongthu">
                 <div class="fw-bold">Tổng thu</div>
                 <h3>{{ number_format($totalIncome) }} VNĐ</h3>
@@ -63,7 +63,7 @@
                     datasets: [{
                         label: 'Số cuốn đã mua',
                         data: topBuyersData,
-                        backgroundColor: 'rgba(21, 92, 245, 0.79)'
+                        backgroundColor: 'rgba(4, 21, 170, 0.79)'
                     }]
                 },
                 options: {
@@ -84,7 +84,7 @@
                     datasets: [{
                         label: 'Số lượt mua',
                         data: topBooksData,
-                        backgroundColor: 'rgba(4, 236, 50, 0.82)'
+                        backgroundColor: 'rgba(7, 191, 28, 0.82)'
                     }]
                 },
                 options: {
@@ -113,8 +113,11 @@
         box-shadow: 0 2px 5px rgba(0.15,0.15,0.15,0.15);
         text-align: center;
         font-size: 30px;
+        color: black;
+        text-decoration: none;
         padding-top: 15px;
         transition: all 0.3s ease;
+        border-bottom: 4px solid rgb(1, 0, 40);
 
     }
     .soluong:hover {
@@ -130,6 +133,7 @@
         padding-top: 15px;
         font-size: 30px;
         transition: all 0.3s ease;
+        border-bottom: 4px solid rgb(24, 19, 166);
     }
     .tongthu:hover {
         box-shadow: 0 2px 2px rgba(1, 6, 35, 0.35);
@@ -144,6 +148,7 @@
         color: green;
         font-size: 30px;
         transition: all 0.3s ease;
+        border-bottom: 4px solid rgb(0, 125, 0);
     }
     .doanhthu:hover {
         box-shadow: 0 2px 2px rgba(1, 6, 35, 0.35);

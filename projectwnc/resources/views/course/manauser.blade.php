@@ -14,8 +14,6 @@
                     <option value="">Sắp xếp</option>
                     <option value="name-asc">Tên người dùng A → Z </option>
                     <option value="name-desc">Tên người dùng Z → A </option>
-                    <option value="year-asc">Năm sinh tăng </option>
-                    <option value="year-desc">Năm sinh giảm </option>
                 </select>
                 <input class="searchInput" type="text" id="searchInput" placeholder="Tìm kiếm...">
             </div>
@@ -120,12 +118,7 @@
             column = 1; type = 'text'; asc = true;
         } else if (value === 'name-desc') {
             column = 1; type = 'text'; asc = false;
-        } else if (value === 'year-asc') {
-            column = 3; type = 'number'; asc = true;
-        } else if (value === 'year-desc') {
-            column = 3; type = 'number'; asc = false;
         }
-
         if (column >= 0) {
             rows.sort((a, b) => {
                 let cellA = a.children[column].textContent.trim();
