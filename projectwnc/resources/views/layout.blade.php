@@ -51,7 +51,7 @@
             <a href="{{ route('search') }}">Tìm sách</a>
             <a href="{{ route('user.order')}}">Lịch sử</a>
             <a href="{{ route('cart.show')}}">Giỏ hàng</a>
-            <a href="{{ route('login') }}">Đăng nhập</a>
+            <a href="{{ route('login') }}">Đăng xuất</a>
         </nav>
     </header>
 
