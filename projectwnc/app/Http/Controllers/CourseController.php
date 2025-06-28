@@ -83,7 +83,6 @@ class CourseController extends Controller
             'anhminhhoa' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp,bmp,svg|max:2048',
         ]);
 
-        // Nếu người dùng chọn ảnh mới, lưu ảnh mới
         if ($request->hasFile('anhminhhoa')) {
             $image = $request->file('anhminhhoa');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -91,7 +90,6 @@ class CourseController extends Controller
             $validated['anhminhhoa'] = $imageName;
         }
 
-        // Nếu không chọn ảnh mới, giữ ảnh cũ
         else {
             unset($validated['anhminhhoa']);
         }
@@ -141,15 +139,12 @@ class CourseController extends Controller
 
     public function deleteUser($username)
     {
-        // Tìm user theo username
         $user = User::where('username', $username)->first();
 
-        // Nếu không tìm thấy user thì thông báo lỗi
         if (!$user) {
             return redirect()->route('course.manauser')->with('error', 'Không tìm thấy người dùng.');
         }
 
-        // Xoá user
         $user->delete();
 
         return redirect()->route('course.manauser')->with('success', 'Đã xoá người dùng.');

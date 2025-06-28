@@ -16,7 +16,6 @@ class AuthController extends Controller
         $password = $request->password;
 
         if ($role === 'admin') {
-            // Đăng nhập admin cố định
             if ($username === 'admin' && $password === '123456') {
                 return redirect()->route('course.page');
             } else {
@@ -25,7 +24,6 @@ class AuthController extends Controller
         }
 
         if ($role === 'user') {
-            // Đăng nhập user từ database
             $user = User::where('username', $username)->first();
 
             if ($user && Hash::check($password, $user->password)) {

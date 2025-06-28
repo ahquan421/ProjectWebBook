@@ -73,32 +73,27 @@
         });
 
 
-
-    // Lấy tất cả các nút có class 'status-button'
     const buttons = document.querySelectorAll('.status-button');
 
-    // Đọc trạng thái đã lưu từ localStorage
     buttons.forEach(button => {
         const index = button.getAttribute('data-index');
         const savedStatus = localStorage.getItem('buttonStatus_' + index);
         
         if (savedStatus) {
-            button.innerText = savedStatus; // Cập nhật trạng thái từ localStorage
+            button.innerText = savedStatus;
             if (savedStatus === "Hoàn tất") {
-                button.disabled = true; // Nếu trạng thái là "Hoàn tất", vô hiệu hóa nút
+                button.disabled = true;
             }
         }
 
-        // Thêm sự kiện khi nhấn vào nút
         button.addEventListener('click', function () {
             if (this.innerText === "Đang xử lý") {
-                this.innerText = "Đang giao hàng"; // Chuyển thành "Đang giao hàng"
+                this.innerText = "Đang giao hàng";
             } else if (this.innerText === "Đang giao hàng") {
-                this.innerText = "Hoàn tất"; // Chuyển thành "Hoàn tất"
-                this.disabled = true; // Vô hiệu hóa nút sau khi chọn "Hoàn tất"
+                this.innerText = "Hoàn tất";
+                this.disabled = true;
             }
 
-            // Lưu trạng thái vào localStorage
             localStorage.setItem('buttonStatus_' + index, this.innerText);
         });
     });

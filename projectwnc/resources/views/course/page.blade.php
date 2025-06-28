@@ -1,10 +1,10 @@
-<!-- resources/views/home.blade.php -->
 
-@extends('layouts.app') <!-- hoặc layout bạn đang dùng -->
+
+@extends('layouts.app') 
 
 @section('content')
 
-<div class="main-layout"> {{-- ✅ THÊM lớp bọc chia cột --}}
+<div class="main-layout"> 
 
     <div class="sidebar">
         @include('course.header')

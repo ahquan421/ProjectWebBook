@@ -9,17 +9,17 @@ class Course extends Model
 {
     use HasFactory;
     protected $fillable = [
-        //'masach',
+        'masach',
         'tensach',
         'tacgia',
         'nxb',
         'theloai',
         'giatien',
         'soluong',
-        //'trongluong',
-        //'sotrang',
-        //'ngonngu',
+        'trongluong',
+        'sotrang',
+        'ngonngu',
         'anhminhhoa',
-        //'mota',
+        'mota',
     ];
 }
