@@ -30,7 +30,7 @@ class CourseFactory extends Factory
             'trongluong'  => fake()->numberBetween(200, 1500),
             'sotrang'     => fake()->numberBetween(50, 1000),
             'ngonngu'     => fake()->randomElement(['Tiếng Việt', 'English', 'Tiếng Pháp']),
-            'anhminhhoa'  => 'bongsenvang.webp',
+            'anhminhhoa' => fake()->randomElement(['conan.webp', 'giaungheo.jpg', 'daiviet.jpg', 'gietconchimnhai.webp']),
             'mota'        => fake()->sentence(50),
         ];
     }
