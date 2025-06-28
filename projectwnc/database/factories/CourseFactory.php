@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Factory as FakerFactory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Course>
@@ -16,6 +17,8 @@ class CourseFactory extends Factory
      */
     public function definition()
     {
+        $faker = FakerFactory::create('vi_VN');
+
         return [
             'masach'      => 'MS' . fake()->unique()->numerify('###'),
             'tensach'     => fake()->sentence(3),

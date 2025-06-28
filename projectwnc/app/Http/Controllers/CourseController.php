@@ -6,6 +6,7 @@ use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class CourseController extends Controller
 {
@@ -109,9 +110,22 @@ class CourseController extends Controller
     public function page(){
         return view('course.page');
     }
-    public function manaorder(){
-        return view('course.manaorder');
-    }
+    public function manaorder()
+{
+    $orders = DB::table('orders')
+        ->join('users', 'orders.user_id', '=', 'users.id')
+        ->join('courses', 'orders.course_id', '=', 'courses.id')
+        ->select(
+            'orders.*',
+            'users.username',
+            'courses.masach',
+            'courses.tensach'
+        )
+        ->orderBy('orders.created_at', 'desc')
+        ->get();
+
+    return view('course.manaorder', compact('orders'));
+}
     public function report(){
         return view('course.report');
     }
