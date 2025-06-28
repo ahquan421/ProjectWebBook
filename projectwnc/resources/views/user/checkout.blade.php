@@ -39,7 +39,13 @@
                         <label for="coupon" class="form-label"><strong>Mã giảm giá:</strong></label>
                         <input type="text" name="coupon" id="coupon" class="form-control" placeholder="Nhập mã">
                     </div>
-
+                    <!-- Giá gốc -->
+                    <div class="mb-1">
+                        <label class="form-label"><strong>Giá gốc:</strong></label>
+                        <p class="text-decoration-line-through text-muted">
+                            <span id="giaGoc"></span> ₫
+                        </p>
+                    </div>
                     <!-- Thành tiền -->
                     <div class="mb-3">
                         <label class="form-label"><strong>Thành tiền:</strong></label>
@@ -58,21 +64,26 @@
     const quantityInput = document.getElementById('quantity');
     const couponInput = document.getElementById('coupon');
     const thanhTienElement = document.getElementById('thanhTien');
+    const giaGocElement = document.getElementById('giaGoc');
 
     function updateThanhTien() {
-        let qty = parseInt(quantityInput.value) || 1;
-        let total = gia * qty;
+        const qty = parseInt(quantityInput.value) || 1;
+        const originalTotal = gia * qty;
+        let finalTotal = originalTotal;
 
+        // Áp mã giảm giá
         if (couponInput.value.trim().toUpperCase() === 'COLIEN') {
-            total = total * 0.9; // Giảm 10%
+            finalTotal = originalTotal * 0.9;
         }
 
-        thanhTienElement.textContent = total.toLocaleString();
+        // Cập nhật HTML
+        giaGocElement.textContent = originalTotal.toLocaleString();
+        thanhTienElement.textContent = finalTotal.toLocaleString();
     }
 
     quantityInput.addEventListener('input', updateThanhTien);
     couponInput.addEventListener('input', updateThanhTien);
-
     window.addEventListener('DOMContentLoaded', updateThanhTien);
 </script>
+
 @endsection
